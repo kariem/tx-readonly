@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+    <Resource id="ds" type="DataSource">
+        JdbcDriver org.h2.Driver
+        JdbcUrl jdbc:h2:file:/tmp/txreadonly/txreadonly;AUTO_SERVER=TRUE
+        UserName sa
+        Password
+        JtaManaged true
+    </Resource>
+</tomee>
