@@ -8,13 +8,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Transactional
 public class Service {
 
     private static final Logger log = Logger.getLogger(Service.class.getName());
 
     private @Inject EntityManager em;
 
+    @Transactional
     public LogEntry createLog(String description) {
         log.info("Start write");
         LogEntry e = new LogEntry();
@@ -25,6 +25,7 @@ public class Service {
         return e;
     }
 
+    @Transactional(readOnly = true)
     public List<LogEntry> findAll() {
         log.info("Start read");
         List<LogEntry> l = em.createQuery("select l From LogEntry as l", LogEntry.class).getResultList();
