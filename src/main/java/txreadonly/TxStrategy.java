@@ -9,12 +9,10 @@ import javax.inject.Inject;
 import javax.persistence.EntityTransaction;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.logging.Logger;
 
 @Dependent @Alternative
 public class TxStrategy extends BeanManagedUserTransactionStrategy {
 
-    private static final Logger logger = Logger.getLogger(TxStrategy.class.getName());
     private @Inject WriteAllowedCheck writeAllowedCheck;
 
     @Override
@@ -47,7 +45,7 @@ public class TxStrategy extends BeanManagedUserTransactionStrategy {
         return e;
     }
 
-        @Override
+    @Override
     protected EntityTransaction getTransaction(EntityManagerEntry entityManagerEntry) {
         EntityTransaction t = super.getTransaction(entityManagerEntry);
         return writeAllowedCheck.wrap(t);

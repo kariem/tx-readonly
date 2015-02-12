@@ -21,7 +21,7 @@ public class WriteAllowedCheck {
     }
 
     EntityTransaction wrap(final EntityTransaction t) {
-        if (readonlyEnabled) {
+        if (isReadOnly()) {
             // error on new transactions that are not set to rollback-only
             if (!t.getRollbackOnly()) {
                 throw new RuntimeException("Cannot write in read-only");
@@ -44,6 +44,11 @@ public class WriteAllowedCheck {
             };
         }
         return t;
+    }
+
+    private boolean isReadOnly() {
+        // perform any check here required to see whether read-only is enabled
+        return readonlyEnabled;
     }
 
     static class TxAdapter implements EntityTransaction {

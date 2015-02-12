@@ -11,9 +11,6 @@ public class LogEntry {
     @Id @GeneratedValue
     private Long id;
 
-    @Version
-    private Long optLock;
-
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private Date date;
@@ -23,10 +20,6 @@ public class LogEntry {
 
     public Long getId() {
         return id;
-    }
-
-    public Long getOptLock() {
-        return optLock;
     }
 
     public Date getDate() {
