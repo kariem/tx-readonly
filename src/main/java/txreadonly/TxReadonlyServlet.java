@@ -1,7 +1,6 @@
 package txreadonly;
 
 import javax.inject.Inject;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +9,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 
 @WebServlet(urlPatterns = "/txreadonly")
 public class TxReadonlyServlet extends HttpServlet {
-
-    private static final Logger LOG = Logger.getLogger(TxReadonlyServlet.class.getName());
 
     private @Inject Service svc;
     private @Inject WriteAllowedCheck check;
